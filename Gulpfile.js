@@ -1,16 +1,16 @@
 const path = require('path')
 const gulp = require('gulp')
 const gulpLoadPlugins = require('gulp-load-plugins')
-const $ = gulpLoadPlugins()
 const browserify = require('browserify')
 const source = require('vinyl-source-stream')
 const buffer = require('vinyl-buffer')
+const $ = gulpLoadPlugins()
 
 
 const PATHS = {
   js: path.resolve('./assets/js'),
   scss: path.resolve('./assets/scss'),
-  public: path.resolve('./public'),
+  public: path.resolve('./'),
 }
 
 gulp.task('babel', () => {
@@ -21,7 +21,7 @@ gulp.task('babel', () => {
     .pipe(buffer())
     .pipe($.uglify())
     .pipe($.rename({suffix: '.min'}))
-    .pipe(gulp.dest(PATHS.public + '/js'))
+    .pipe(gulp.dest(PATHS.public + '/js/'))
 })
 
 gulp.task('scss', () => {
@@ -29,7 +29,7 @@ gulp.task('scss', () => {
     .pipe($.sass().on('error', $.sass.logError))
     .pipe($.cssmin())
     .pipe($.rename({ suffix: '.min' }))
-    .pipe(gulp.dest(PATHS.public + '/css/'))
+    .pipe(gulp.dest(PATHS.public + '/styles/'))
 })
 
 /**
