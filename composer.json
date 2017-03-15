@@ -1,5 +1,6 @@
 {
     "require": {
-        "slim/slim": "3.0.0-RC2"
+        "slim/slim": "3.0.0-RC2",
+        "pug-php/pug": "^2.5"
     }
 }
